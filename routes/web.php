@@ -56,11 +56,18 @@ Route::post('/admin/bookings/{id}/payment', [FinanceController::class, 'storeBoo
     });
 
     // ===================================================
-    // 2. KHUSUS MEMBER / ANGGOTA (Hanya Lihat Jadwal)
-    // ===================================================
-    Route::middleware(['role:member'])->group(function () {
-        Route::get('/member/dashboard', [MemberAreaController::class, 'index'])->name('member.dashboard');
-    });
+// 2. KHUSUS MEMBER / ANGGOTA
+// ===================================================
+Route::middleware(['role:member'])->group(function () {
+    // Beranda (Home)
+    Route::get('/member/dashboard', [MemberAreaController::class, 'index'])->name('member.dashboard');
+    
+    // Menu Jadwal Lengkap
+    Route::get('/member/schedule', [MemberAreaController::class, 'schedule'])->name('member.schedule');
+    
+    // Menu Keuangan (Transparansi)
+    Route::get('/member/finance', [MemberAreaController::class, 'finance'])->name('member.finance');
+});
 
     // ===================================================
     // 3. UMUM (Bisa Admin & Member)
