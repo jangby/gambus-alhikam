@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
 
-    <div class="pb-24 pt-4 px-4 max-w-lg mx-auto md:max-w-4xl">
+    <div class="pb-24 pt-2 px-2 max-w-xl mx-auto md:max-w-5xl">
         
         <div class="bg-gray-200 p-1 rounded-xl flex items-center mb-6 relative">
             <button class="flex-1 bg-white text-emerald-800 shadow-sm rounded-lg py-2 text-sm font-bold transition-all">

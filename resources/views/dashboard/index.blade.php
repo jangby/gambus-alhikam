@@ -8,7 +8,7 @@
         </div>
     </x-slot>
 
-    <div class="pb-24 pt-4 px-4 max-w-lg mx-auto md:max-w-5xl">
+    <div class="pb-24 pt-2 px-2 max-w-xl mx-auto md:max-w-5xl">
 
         <div class="bg-gradient-to-r from-emerald-900 to-emerald-700 rounded-2xl p-6 text-white shadow-xl mb-6 relative overflow-hidden">
             <div class="absolute right-0 top-0 p-4 opacity-10">

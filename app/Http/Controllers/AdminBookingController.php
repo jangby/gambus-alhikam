@@ -27,24 +27,28 @@ class AdminBookingController extends Controller
     // --- BAGIAN INI YANG PENTING (UPDATE) ---
     public function update(Request $request, $id)
     {
-        // 1. Cari data booking
         $booking = Booking::findOrFail($id);
 
-        // 2. Validasi input (opsional tapi disarankan)
-        $request->validate([
-            'status' => 'required',
-            'total_price' => 'numeric',
-        ]);
-
-        // 3. Simpan perubahan ke Database
         $booking->update([
-            'status' => $request->status, // Pastikan ini tersimpan
+            'status' => $request->status,
             'total_price' => $request->total_price,
+            'booker_name' => $request->booker_name,
+            'event_date' => $request->event_date,
+            'event_time' => $request->event_time,
+            'venue_address' => $request->venue_address,
+            'event_theme' => $request->event_theme,
             'notes' => $request->notes,
+            
+            // Update Data Orang Tua
+            'groom_name' => $request->groom_name,
+            'groom_father' => $request->groom_father,
+            'groom_mother' => $request->groom_mother,
+            'bride_name' => $request->bride_name,
+            'bride_father' => $request->bride_father,
+            'bride_mother' => $request->bride_mother,
         ]);
 
-        // 4. Kembali ke halaman sebelumnya dengan pesan sukses
-        return redirect()->back()->with('success', 'Status dan Data berhasil diperbarui!');
+        return redirect()->back()->with('success', 'Data booking berhasil diperbarui!');
     }
 
     // Hapus Booking

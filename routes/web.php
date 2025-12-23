@@ -14,6 +14,8 @@ use App\Http\Controllers\CalendarController;
 // --- HALAMAN PUBLIK (Tanpa Login) ---
 Route::get('/', [FrontController::class, 'index'])->name('home');
 Route::post('/booking', [FrontController::class, 'storeBooking'])->name('booking.store');
+// Halaman Form Booking (Tampilan)
+Route::get('/booking-now', [FrontController::class, 'createBooking'])->name('booking.create');
 
 // --- HALAMAN YANG BUTUH LOGIN ---
 Route::middleware(['auth', 'verified'])->group(function () {
@@ -33,11 +35,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
         // CRUD Booking (Edit, Update, Delete)
         Route::get('/admin/booking/{id}/edit', [AdminBookingController::class, 'edit'])->name('admin.bookings.edit');
-        Route::put('/admin/booking/{id}', [AdminBookingController::class, 'update'])->name('admin.bookings.update');
-        Route::delete('/admin/booking/{id}', [AdminBookingController::class, 'destroy'])->name('admin.bookings.destroy');
+        // --- ROUTE UPDATE BOOKING (YANG HILANG TADI) ---
+Route::put('/admin/bookings/{id}', [AdminBookingController::class, 'update'])->name('bookings.update');
+Route::delete('/admin/bookings/{id}', [AdminBookingController::class, 'destroy'])->name('bookings.destroy');
 
-        // Pembayaran Cicilan
-        Route::post('/admin/booking/{id}/payment', [BookingPaymentController::class, 'store'])->name('booking.payment.store');
+// --- ROUTE KHUSUS PEMBAYARAN DI HALAMAN EDIT ---
+Route::post('/admin/bookings/{id}/payment', [FinanceController::class, 'storeBookingPayment'])->name('bookings.payment.store');
         Route::delete('/admin/transaction/{id}', [BookingPaymentController::class, 'destroy'])->name('booking.transaction.destroy');
 
         // Keuangan (Menu Kas)

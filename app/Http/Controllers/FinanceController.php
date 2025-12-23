@@ -88,4 +88,27 @@ class FinanceController extends Controller
 
         return view('finance.print', compact('transactions', 'totalIncome', 'totalExpense', 'balance', 'title', 'scope', 'month', 'year'));
     }
+
+    // Method baru untuk menyimpan pembayaran dari halaman Detail Booking
+    public function storeBookingPayment(Request $request, $id)
+    {
+        $request->validate([
+            'amount' => 'required|numeric|min:1000',
+            'description' => 'required|string',
+        ]);
+
+        $booking = \App\Models\Booking::findOrFail($id);
+
+        // Simpan ke Transaksi
+        \App\Models\Transaction::create([
+            'user_id' => auth()->id(),
+            'booking_id' => $booking->id, // Link ke booking
+            'type' => 'income', // Pemasukan
+            'amount' => $request->amount,
+            'description' => 'Pembayaran Booking (' . $booking->booker_name . ') - ' . $request->description,
+            'date' => now(),
+        ]);
+
+        return redirect()->back()->with('success', 'Pembayaran berhasil dicatat!');
+    }
 }

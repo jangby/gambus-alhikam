@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
 
-    <div class="pb-24 pt-4 px-4 max-w-lg mx-auto md:max-w-4xl">
+    <div class="pb-24 pt-2 px-2 max-w-xl mx-auto md:max-w-5xl">
         
         <div class="bg-gradient-to-br from-emerald-800 to-emerald-600 rounded-2xl shadow-xl p-6 text-white mb-6 relative overflow-hidden">
             <div class="absolute -top-6 -right-6 w-32 h-32 bg-white opacity-10 rounded-full blur-2xl"></div>
