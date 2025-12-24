@@ -68,9 +68,34 @@
                                 <label class="block text-xs font-bold text-gray-500 mb-1 uppercase">Jam Mulai</label>
                                 <input type="time" name="event_time" required class="w-full rounded-xl border-gray-300 focus:ring-emerald-500 focus:border-emerald-500 py-3">
                             </div>
+                            
                             <div class="sm:col-span-2">
-                                <label class="block text-xs font-bold text-gray-500 mb-1 uppercase">Lokasi Lengkap</label>
-                                <textarea name="venue_address" rows="2" required class="w-full rounded-xl border-gray-300 focus:ring-emerald-500 focus:border-emerald-500 py-3"></textarea>
+                                <label class="block text-xs font-bold text-gray-500 mb-1 uppercase">Alamat Lengkap (Nama Gedung / Jalan)</label>
+                                <textarea name="venue_address" rows="2" required class="w-full rounded-xl border-gray-300 focus:ring-emerald-500 focus:border-emerald-500 py-3" placeholder="Contoh: Gedung Serbaguna Al-Hikmah, Jl. Mawar No. 10..."></textarea>
+                            </div>
+
+                            <div class="sm:col-span-2">
+                                <div class="flex items-center gap-2 mb-1">
+                                    <label class="block text-xs font-bold text-gray-500 uppercase">Link Google Maps</label>
+                                    
+                                    <button type="button" onclick="toggleMapsTutorial()" class="w-4 h-4 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-[10px] font-bold hover:bg-blue-200 transition" title="Cara ambil link">
+                                        i
+                                    </button>
+                                </div>
+                                
+                                <input type="url" name="location_gmaps" class="w-full rounded-xl border-gray-300 focus:ring-emerald-500 focus:border-emerald-500 py-3 text-blue-600 underline" placeholder="https://maps.app.goo.gl/...">
+                                <p class="text-[10px] text-gray-400 mt-1">Paste link lokasi maps agar tim kami mudah menuju lokasi.</p>
+
+                                <div id="mapsTutorial" class="hidden mt-3 p-3 bg-blue-50 border border-blue-100 rounded-xl text-xs text-blue-800">
+                                    <p class="font-bold mb-1">Cara menyalin Link Maps:</p>
+                                    <ol class="list-decimal list-inside space-y-1 text-blue-700/80">
+                                        <li>Buka aplikasi <b>Google Maps</b>.</li>
+                                        <li>Cari lokasi acara / gedung.</li>
+                                        <li>Geser menu di bawah, klik tombol <b>Share (Bagikan)</b>.</li>
+                                        <li>Pilih <b>Copy Link (Salin Tautan)</b>.</li>
+                                        <li>Tempel (Paste) di kolom atas ini.</li>
+                                    </ol>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -144,6 +169,17 @@
             <p class="text-center text-gray-400 text-xs mt-8">Data Anda aman dan hanya digunakan untuk keperluan acara.</p>
         </div>
     </div>
+
+    <script>
+        function toggleMapsTutorial() {
+            var tutorial = document.getElementById('mapsTutorial');
+            if (tutorial.classList.contains('hidden')) {
+                tutorial.classList.remove('hidden');
+            } else {
+                tutorial.classList.add('hidden');
+            }
+        }
+    </script>
 
 </body>
 </html>

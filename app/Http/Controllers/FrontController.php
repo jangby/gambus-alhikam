@@ -23,6 +23,7 @@ class FrontController extends Controller
             'event_date' => 'required',
             'event_time' => 'required',
             'venue_address' => 'required',
+            'location_gmaps' => 'required',
         ]);
 
         // 2. Generate Kode Booking (Ini bagian pentingnya)
@@ -38,6 +39,7 @@ class FrontController extends Controller
             'event_time' => $request->event_time,
             'venue_address' => $request->venue_address,
             'event_theme' => $request->event_theme,
+            'location_gmaps' => $request->location_gmaps,
             
             // Data Pria
             'groom_name' => $request->groom_name,

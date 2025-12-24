@@ -18,6 +18,7 @@ class Booking extends Model
         'event_time',
         'venue_address',
         'event_theme',
+        'location_gmaps',
         'status',
         'total_price',
         'notes',

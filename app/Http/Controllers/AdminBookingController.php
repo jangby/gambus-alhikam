@@ -36,6 +36,7 @@ class AdminBookingController extends Controller
             'event_date' => $request->event_date,
             'event_time' => $request->event_time,
             'venue_address' => $request->venue_address,
+            'location_gmaps' => $request->location_gmaps,
             'event_theme' => $request->event_theme,
             'notes' => $request->notes,
             
