@@ -18,9 +18,9 @@
     <div class="max-w-4xl mx-auto bg-white p-10 shadow-lg print:shadow-none">
         
         <div class="text-center border-b-2 border-black pb-4 mb-6">
-            <h1 class="text-3xl font-bold uppercase tracking-widest">Grup Gambus Al-Harmoni</h1>
+            <h1 class="text-3xl font-bold uppercase tracking-widest text-[#4A3728]">Grup Gambus Al-Hikam</h1>
             <p class="text-sm">Jalan Kenangan No. 12, Kota Seni, Indonesia</p>
-            <p class="text-sm">Telp: 0812-3456-7890 | Email: info@gambus.com</p>
+            <p class="text-sm">Telp: 0812-3456-7890 | Email: admin@gambusalhikam.com</p>
         </div>
 
         <div class="text-center mb-8">
@@ -81,7 +81,7 @@
         </div>
 
         <div class="mt-10 text-center no-print">
-            <button onclick="window.history.back()" class="bg-gray-800 text-white px-6 py-2 rounded hover:bg-gray-700">
+            <button onclick="window.history.back()" class="bg-[#4A3728] text-white px-6 py-2 rounded hover:bg-[#3E2D20] transition">
                 &larr; Kembali
             </button>
         </div>

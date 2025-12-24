@@ -14,6 +14,15 @@ export default {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
+
+            colors: {
+                gambus: {
+                    primary: '#4A3728',  // Coklat Tua (Warna Kayu/Kopi) - untuk Navbar & Tombol
+                    secondary: '#D4A373', // Coklat Emas - untuk Aksen/Hover
+                    bg: '#FEFAE0',       // Krem Putih Gading - untuk Background Halaman
+                    text: '#2C1810',     // Coklat Sangat Tua - untuk Teks Judul
+                }
+            }
         },
     },
 
