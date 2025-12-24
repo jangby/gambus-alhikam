@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <div class="flex flex-col md:flex-row justify-between md:items-center gap-2">
-            <h2 class="font-semibold text-lg text-gambus-text leading-tight flex items-center gap-2">
+            <h2 class="font-semibold text-lg text-[#FEFAE0] leading-tight flex items-center gap-2">
                 📝 Manajemen Booking
             </h2>
             <div class="flex items-center gap-2">

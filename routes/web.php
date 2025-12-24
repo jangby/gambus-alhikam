@@ -10,6 +10,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\MemberAreaController; // Controller Member yang baru
 use App\Http\Controllers\CalendarController;
+use App\Http\Controllers\Admin\SiteContentController;
 
 // --- HALAMAN PUBLIK (Tanpa Login) ---
 Route::get('/', [FrontController::class, 'index'])->name('home');
@@ -55,6 +56,12 @@ Route::post('/admin/bookings/{id}/payment', [FinanceController::class, 'storeBoo
         // Manajemen Anggota (Tambah/Hapus Personil)
         Route::resource('members', MemberController::class)->except(['create', 'edit', 'show']);
         Route::get('/calendar', [CalendarController::class, 'index'])->name('calendar.index');
+
+        // Route Pengaturan Konten
+    Route::get('/admin/site-content', [SiteContentController::class, 'index'])->name('admin.site.index');
+    Route::put('/admin/site-settings', [SiteContentController::class, 'updateSettings'])->name('admin.site.update');
+    Route::post('/admin/gallery', [SiteContentController::class, 'storeGallery'])->name('admin.gallery.store');
+    Route::delete('/admin/gallery/{id}', [SiteContentController::class, 'destroyGallery'])->name('admin.gallery.destroy');
     });
 
     // ===================================================

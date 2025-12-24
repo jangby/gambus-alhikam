@@ -10,9 +10,12 @@ class FrontController extends Controller
 {
     // Menampilkan Halaman Depan
     public function index()
-    {
-        return view('welcome');
-    }
+{
+    $settings = \App\Models\SiteSetting::first(); // Ambil settings
+    $galleries = \App\Models\Gallery::latest()->take(6)->get(); // Ambil 6 foto terbaru
+    
+    return view('welcome', compact('settings', 'galleries'));
+}
 
     public function storeBooking(Request $request)
     {

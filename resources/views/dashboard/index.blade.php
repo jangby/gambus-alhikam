@@ -4,7 +4,7 @@
             <div class="flex items-center gap-3">
                 <img src="{{ asset('logo.jpeg') }}" class="w-10 h-10 rounded-full border-2 border-white shadow-sm object-cover" alt="Logo">
                 <div>
-                    <h2 class="font-bold text-lg text-gambus-text leading-tight">
+                    <h2 class="font-bold text-lg text-[#FEFAE0] leading-tight">
                         Dashboard
                     </h2>
                     <span class="text-xs text-gray-500">{{ \Carbon\Carbon::now()->isoFormat('dddd, D MMMM Y') }}</span>
