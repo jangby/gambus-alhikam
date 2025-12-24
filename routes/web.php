@@ -16,6 +16,7 @@ Route::get('/', [FrontController::class, 'index'])->name('home');
 Route::post('/booking', [FrontController::class, 'storeBooking'])->name('booking.store');
 // Halaman Form Booking (Tampilan)
 Route::get('/booking-now', [FrontController::class, 'createBooking'])->name('booking.create');
+Route::get('/check-availability', [FrontController::class, 'checkAvailability'])->name('api.check_availability');
 
 // --- HALAMAN YANG BUTUH LOGIN ---
 Route::middleware(['auth', 'verified'])->group(function () {
@@ -29,6 +30,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
         Route::get('/admin/bookings', [AdminBookingController::class, 'index'])->name('admin.bookings.index');
+        Route::post('/admin/bookings', [AdminBookingController::class, 'store'])->name('admin.bookings.store');
         
         // Detail Booking (Yang ada maps dan data mempelai lengkap)
         Route::get('/dashboard/booking/{id}', [DashboardController::class, 'show'])->name('dashboard.show');

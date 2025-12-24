@@ -20,11 +20,22 @@ class FrontController extends Controller
         $request->validate([
             'booker_name' => 'required',
             'booker_phone' => 'required',
-            'event_date' => 'required',
+            'event_date' => 'required|date|after:today',
             'event_time' => 'required',
             'venue_address' => 'required',
             'location_gmaps' => 'required',
         ]);
+
+        // [TAMBAHAN BARU] Cek apakah tanggal sudah dibooking (kecuali status cancelled)
+        $isBooked = Booking::where('event_date', $request->event_date)
+                    ->where('status', '!=', 'cancelled')
+                    ->exists();
+
+        if ($isBooked) {
+            return redirect()->back()
+                ->withInput() // Kembalikan input user agar tidak ngetik ulang
+                ->with('error', 'Mohon maaf, tanggal tersebut sudah TERBOOKING. Silakan pilih tanggal lain.');
+        }
 
         // 2. Generate Kode Booking (Ini bagian pentingnya)
         $code = 'GMB-' . date('Ymd') . '-' . rand(100, 999);
@@ -56,6 +67,39 @@ class FrontController extends Controller
         ]);
 
         return redirect()->back()->with('success', 'Booking berhasil! Kode: ' . $code);
+    }
+
+    // [METHOD BARU] Untuk API Kalender & Cek Tanggal
+    public function checkAvailability(Request $request)
+    {
+        // Jika ada parameter tanggal spesifik (untuk real-time check di input)
+        if ($request->has('date')) {
+            $isBooked = Booking::where('event_date', $request->date)
+                        ->where('status', '!=', 'cancelled')
+                        ->exists();
+            
+            return response()->json([
+                'status' => $isBooked ? 'booked' : 'available',
+                'message' => $isBooked ? 'Tanggal sudah penuh!' : 'Tanggal tersedia.'
+            ]);
+        }
+
+        // Jika tidak ada parameter, kembalikan SEMUA tanggal booked (untuk Kalender Visual)
+        $bookings = Booking::where('status', '!=', 'cancelled')
+                    ->select('event_date', 'event_time', 'booking_code')
+                    ->get();
+
+        // Format untuk FullCalendar
+        $events = $bookings->map(function($item) {
+            return [
+                'title' => 'FULL (Booked)',
+                'start' => $item->event_date,
+                'color' => '#ef4444', // Warna Merah (Tailwind red-500)
+                'display' => 'background' // Tampil sebagai background block
+            ];
+        });
+
+        return response()->json($events);
     }
 
     // Menampilkan Halaman Form Booking
