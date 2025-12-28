@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gambus-text leading-tight">
+        <h2 class="font-semibold text-xl text-[#FEFAE0] leading-tight">
             📅 Kalender Job
         </h2>
     </x-slot>
@@ -40,8 +40,9 @@
                         <div class="w-3 h-3 rounded-full bg-gambus-secondary"></div><span class="text-gray-600">Pending (Emas)</span>
                     </div>
                     <div class="flex items-center gap-1">
-                        <div class="w-3 h-3 rounded-full bg-gambus-primary"></div><span class="text-gray-600">Confirmed (Coklat)</span>
-                    </div>
+    <div class="w-3 h-3 rounded-full bg-emerald-500"></div>
+    <span class="text-gray-600">Confirmed (Hijau)</span>
+</div>
                     <div class="flex items-center gap-1">
                         <div class="w-3 h-3 rounded-full bg-gray-400"></div><span class="text-gray-600">Selesai (Abu)</span>
                     </div>
